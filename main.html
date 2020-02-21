@@ -1,0 +1,42 @@
+﻿<html lang="zh-cn">  
+<body>  
+    <textarea id="text1"></textarea>  
+    <button  id="btn" onclick="translator()">翻译</button>  
+    <textarea id="text2"></textarea>  
+<script src="http://dict.cn/hc/" type="text/javascript"></script>
+    <script>  
+        var langPackage = {  
+            "行别":"ways",  
+            "上行":"up",  
+            "下行":"down",  
+            "title":"标题"  
+        }  
+
+        function translator(){  
+            var txt1=document.getElementById("text1");  
+            var txt2=document.getElementById('text2');  
+            var pat= new RegExp("[a-z\u4e00-\u9fa5]+","g");  //a-z 所有汉字 g：  global 全局匹配（找整个字符串） 
+            var arr=pat.exec(txt1.value);////.exec(字符串)  捕获方法用于检索字符串中的正则表达式的匹配.返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。  
+            if(arr!=null){  
+                txt2.value=langPackage[arr[0]];  
+            }  
+        }  
+
+	//快捷键enter
+var input = document.getElementById("text1");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("btn").click();
+    }
+});
+    </script> 
+
+
+<div class="clear"></div>
+<div id="footer"><!--done-->
+Copyright © 2020 真的想不出来
+<br><span id="poweredby">Powered by .js Core on Windows7</span>
+</div>
+</body>  
+</html>
